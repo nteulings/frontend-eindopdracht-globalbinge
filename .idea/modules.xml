@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/frontend-eindopdracht-globalbinge.iml" filepath="$PROJECT_DIR$/.idea/frontend-eindopdracht-globalbinge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../frontend-eindopdracht-globalbinge/.idea/frontend-eindopdracht-globalbinge.iml" filepath="$PROJECT_DIR$/../frontend-eindopdracht-globalbinge/.idea/frontend-eindopdracht-globalbinge.iml" />
     </modules>
   </component>
 </project>
