@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Homepage() {
+function Landingpage() {
     return (
         <div className="page-container">
             <h1>Homepage</h1>
@@ -9,4 +9,4 @@ function Homepage() {
     );
 }
 
-export default Homepage;
+export default Landingpage;

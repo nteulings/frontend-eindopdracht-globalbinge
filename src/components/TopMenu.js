@@ -6,8 +6,9 @@ import logo from '../assets/globalbing-logo.png';
 function TopMenu() {
     return (
         <nav>
+            <img src={logo} alt={'logo'}/>
+
             <div className="nav-container">
-                <img src={logo} alt={'logo'}/>
                 <ul>
                     <li>
                         <NavLink to="/" exact activeClassName="active-link">Home</NavLink>

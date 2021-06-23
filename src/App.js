@@ -4,7 +4,7 @@ import TopMenu from '../src/components/TopMenu'
 import About from "./Pages/About";
 import Countries from './Pages/Countries';
 import Login from './Pages/Login';
-import HomePage from "./Pages/HomePage";
+import HomePage from "./Pages/Landingpage";
 import {
     BrowserRouter as Router,
     Switch,
