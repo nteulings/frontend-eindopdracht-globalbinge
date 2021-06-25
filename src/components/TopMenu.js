@@ -1,31 +1,32 @@
 import React from 'react';
 import './TopMenu.css'
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/globalbing-logo.png';
+import Logo from '../assets/globalbing-logo.png';
+import { ImMenu } from "react-icons/im";
 
 function TopMenu() {
     return (
         <nav>
-            <img src={logo} alt={'logo'}/>
-
             <div className="nav-container">
-                <ul>
-                    <li>
-                        <NavLink to="/" exact activeClassName="active-link">Home</NavLink>
-                    </li>
+                <img src={Logo} alt="Logo" id={"logo"}/>
+                    <ul>
+                        <li>
+                            <NavLink to="/" exact activeClassName="active-link">Home</NavLink>
+                        </li>
 
-                    <li>
-                        <NavLink to="/about" activeClassName="active-link">About</NavLink>
-                    </li>
+                        <li>
+                            <NavLink to="/about" activeClassName="active-link">About</NavLink>
+                        </li>
 
-                    <li>
-                        <NavLink to="/countries" activeClassName="active-link">Countries</NavLink>
-                    </li>
+                        <li>
+                            <NavLink to="/countries" activeClassName="active-link">Countries</NavLink>
+                        </li>
 
-                    <li>
-                        <NavLink to="/login" activeClassName="active-link">Login</NavLink>
-                    </li>
+                        <li>
+                            <NavLink to="/login" activeClassName="active-link">Login</NavLink>
+                        </li>
                 </ul>
+                    <ImMenu id={'hamburger-menu'} size={40} />
             </div>
         </nav>
     );
