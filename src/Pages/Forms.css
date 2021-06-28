@@ -23,6 +23,12 @@ form input {
     border-radius: 10px;
 }
 
+select {
+    width:100%;
+    padding:15px;
+    cursor: pointer;
+}
+
 button {
     background-color: #B81D24;
     border: none;
