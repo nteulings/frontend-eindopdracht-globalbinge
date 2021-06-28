@@ -1,31 +1,53 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
 import "./Forms.css";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import axios from "axios";
 
-
-// [x] setup signup
-//    [x]  make fields form
-//    [x]  basic css styling
-// [x] install react hook form
-// [x] setup useform handlesubmit
-// [x] set register and required fields
-// [ ] set errors and validation
-// [ ] set error messages
-// [ ] set css
+// authentication:
+// - [x] install axios
+// - [x] import axios
+// - [x] Make asynch function
+// - [x] try / catch block
+// - [x] try: POST request to endpoint:https://polar-lake-14365.herokuapp.com/api/auth/signup
+//     - [x] POST request username & password)
+// - [x] success message user
+// - [x] redirect to login with delay
+// - [ ] set errors en loading
+// ----
+// - [ ] set errors and validation
+// - [ ] set error messages
+// - [ ] set css error messages
 
 
 export default function SignUp() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const history = useHistory()
+    const { register, handleSubmit } = useForm();
+    const [ successMessage, setSuccesMessage ] = useState("false")
 
-    function onSubmit(data) {
+    async function onSubmit(data) {
         console.log("what is data", data)
+        try {
+            const response = await axios.post("https://polar-lake-14365.herokuapp.com/api/auth/signup",
+                {
+                    email: data.email,
+                    username: data.username,
+                    password: data.password,
+                    // role: user???
+                });
+            console.log(response);
+            setSuccesMessage("successfully registered")
+            setTimeout(() => history.push('/login'), 2000);
+
+        } catch (error){
+            console.log("error", error);
+        }
     }
-    console.log("wat is errors", errors)
 
     return (
         <>
-        <form className={"form-container"}
+            <h1>{successMessage}</h1>
+            {!successMessage && <form className={"form-container"}
               onSubmit={handleSubmit(onSubmit)}>
             <h1>REGISTER</h1>
             <label htmlFor={"username-field"}>
@@ -84,13 +106,14 @@ export default function SignUp() {
             </label>
 
             <button
+                type={"submit"}
                 className={"form-button"}
-                onClick={onSubmit}
             >sign up
             </button>
+
             <p>already have an account login <Link to="/login">here</Link></p>
 
-        </form>
+        </form>}
         </>
     );
 }
