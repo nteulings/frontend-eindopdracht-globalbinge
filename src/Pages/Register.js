@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import "./Forms.css";
+import {Link} from "react-router-dom";
+
 
 // [x] setup signup
 //    [x]  make fields form
@@ -14,11 +16,12 @@ import "./Forms.css";
 
 
 export default function SignUp() {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     function onSubmit(data) {
         console.log("what is data", data)
     }
+    console.log("wat is errors", errors)
 
     return (
         <>
@@ -34,7 +37,7 @@ export default function SignUp() {
                 placeholder="username"
                 name={"username"}
                 {...register("username",
-                    {required: true})}
+                    {required: true, maxLength: 8})}
             />
 
             <label htmlFor={"email-field"}>
@@ -47,7 +50,7 @@ export default function SignUp() {
                 placeholder="email adress"
                 name="email"
                 {...register("email",
-                    {required: true})}
+                    {required: true, maxLength: 64})}
             />
 
             <label htmlFor={"password-field"}>
@@ -60,7 +63,7 @@ export default function SignUp() {
                 placeholder="password"
                 name={"password"}
                 {...register("password",
-                    {required: true})}
+                    {required: true, min: 6, maxLength: 8})}
             />
             {/*get from api?*/}
             <label><h3>Select your country of origin:</h3></label>
@@ -68,20 +71,25 @@ export default function SignUp() {
                 <option value="Netherlands">Netherlands</option>
                 <option value="Germany"> Germany</option>
             </select>
-            <label>
+            <label className={"checkbox-container"}>
+                <h3>I have completed this form truthfully.</h3>
             <input
                 type="checkbox"
                 name={"checked"}
+                // checked={"checked"}
                 {...register("checked",
                     {required: true})}
-            />
-                <h3>I have completed this form truthfully.</h3></label>
+                />
+                <span className="checkmark"></span>
+            </label>
 
             <button
                 className={"form-button"}
                 onClick={onSubmit}
             >sign up
             </button>
+            <p>already have an account login <Link to="/login">here</Link></p>
+
         </form>
         </>
     );
