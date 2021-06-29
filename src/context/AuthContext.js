@@ -1,14 +1,43 @@
-import React, {createContext} from "react";
+import React, {createContext, useEffect, useState} from "react";
 
-export const AuthContext = createContext({});
+//#Setup context:
+// - [x] Which data in context?
+// - [x] functions login logout
+// - [x] state for user and status(user => null en status => 'pending')
+// - [x] use effect for refresh (mountig cycle)
+// - [x] status done? children visable
+// - [x] set state en functions in data object
 
-function AuthContextProvider({ children }){
-    const data = {};
+export const authContext = createContext({});
 
-    return <AuthContext.Provider value={data}>
-        {children}
-    </AuthContext.Provider>
+function AuthContextProvider({ children }) {
+
+    const [authState, setAuthState] = useState({user: null, status: 'pending'});
+
+    useEffect(() => {
+        setTimeout(() =>
+            setAuthState({user: null, status: 'done'}), 2000);
+    }, []);
+
+    function login() {
+        //todo
+    }
+
+    function logout() {
+
+    }
+
+    // data in context
+    const data = {authState: authState, login: login, logout: logout};
+
+    return (
+        <authContext.Provider value={data}>
+            {authState.status === 'pending' && <h1>fetching</h1>}
+            {authState.status === "done" && children}
+        </authContext.Provider>
+    )
 }
+
 export default AuthContextProvider;
 
 // #Context:
@@ -20,4 +49,4 @@ export default AuthContextProvider;
 //    - [x] empty data object
 // 3. [x] pass data object value={} property to .Provider
 // 4. [x] export context and provider component
-// 5. [ ] import provider component in index.js
+// 5. [x] import provider component in index.js
