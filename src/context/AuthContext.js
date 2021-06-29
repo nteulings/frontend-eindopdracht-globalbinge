@@ -1,6 +1,6 @@
-import {createContext} from "react";
+import React, {createContext} from "react";
 
-export const authContext = createContext({});
+export const AuthContext = createContext({});
 
 function AuthContextProvider({ children }){
     const data = {};
