@@ -13,7 +13,7 @@ import axios from "axios";
 //     - [x] POST request username & password)
 // - [x] success message user
 // - [x] redirect to login with delay
-// - [ ] set errors en loading
+// - [X] set errors en loading
 // ----
 // - [ ] set errors and validation
 // - [ ] set error messages
@@ -21,12 +21,17 @@ import axios from "axios";
 
 
 export default function SignUp() {
+    const [ loading, toggleLoading] = useState(false)
+    const [ error, setError ] = useState('')
     const history = useHistory()
     const { register, handleSubmit } = useForm();
-    const [ successMessage, setSuccesMessage ] = useState("false")
+    const [ registerSuccess, toggleRegisterSuccess ] = useState(false)
 
     async function onSubmit(data) {
+        setError('');
+        toggleLoading(true);
         console.log("what is data", data)
+
         try {
             const response = await axios.post("https://polar-lake-14365.herokuapp.com/api/auth/signup",
                 {
@@ -36,18 +41,21 @@ export default function SignUp() {
                     // role: user???
                 });
             console.log(response);
-            setSuccesMessage("successfully registered")
+
+            toggleRegisterSuccess(true);
+
             setTimeout(() => history.push('/login'), 2000);
 
-        } catch (error){
-            console.log("error", error);
+        } catch(e) {
+            console.error(e);
+            setError(`registration failed, try again (${e.message})`);
         }
+        toggleLoading(false);
     }
 
     return (
         <>
-            <h1>{successMessage}</h1>
-            {!successMessage && <form className={"form-container"}
+            <form className={"form-container"}
               onSubmit={handleSubmit(onSubmit)}>
             <h1>REGISTER</h1>
             <label htmlFor={"username-field"}>
@@ -102,18 +110,21 @@ export default function SignUp() {
                 {...register("checked",
                     {required: true})}
                 />
-                <span className="checkmark"></span>
+                {/*<span className="checkmark"></span>*/}
             </label>
 
             <button
                 type={"submit"}
                 className={"form-button"}
-            >sign up
+                disabled={loading}
+            >
+                {loading ? 'sending...' : "sign up"}
             </button>
 
             <p>already have an account login <Link to="/login">here</Link></p>
-
-        </form>}
+                {registerSuccess === true &&  <p>Successfully registered, you will be redirected to the login page</p>}
+                {error && <p className="error-message">{error}</p>}
+        </form>
         </>
     );
 }
