@@ -19,8 +19,8 @@ function AuthContextProvider({ children }) {
             setAuthState({user: null, status: 'done'}), 2000);
     }, []);
 
-    function login() {
-        //todo
+    function login(token) {
+        console.log("do we have a token", token);
     }
 
     function logout() {

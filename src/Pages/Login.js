@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import "./Forms.css"
 import axios from "axios";
+import { authContext } from "../context/AuthContext";
 
 // - [x] import axios
 // - [x] Make asynch function
@@ -10,9 +11,9 @@ import axios from "axios";
 // - [x] try: POST request to endpoint:https://polar-lake-14365.herokuapp.com/api/auth/signin
 //     - [x] POST request username & password)
 // - [x] what is response. success:
-// - [ ] pass token to context:
-//     - [ ] import useContext en AuthContext
-// - [ ] Destructure login function
+// - [x] pass token to context:
+//     - [x] import useContext en AuthContext
+//     - [x] Destructure login function
 // - [ ] call login function when success + token??
 // ---
 // [ ] set errors and validation
@@ -20,6 +21,8 @@ import axios from "axios";
 
 function SignIn() {
    const { handleSubmit, register } = useForm();
+   const { login } = useContext(authContext);
+   console.log("what is", login)
 
    async function onSubmit(data) {
        try{
@@ -30,7 +33,7 @@ function SignIn() {
                 password: data.password,
                })
            console.log("what is response", (await response).data.accessToken);
-
+           login((await response).data.accessToken);
        } catch (error) {
            console.log(error)
        }
