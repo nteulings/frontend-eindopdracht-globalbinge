@@ -65,7 +65,7 @@ form h1 {
 .checkbox-container {
     display: block;
     position: relative;
-    padding-left: 30px;
+    padding-left: 40px;
     margin: 12px 0px;
     vertical-align: middle;
     cursor: pointer;
@@ -86,8 +86,8 @@ form h1 {
     position: absolute;
     top: 0;
     left: 0;
-    height: 20px;
-    width: 20px;
+    height: 22px;
+    width: 22px;
     background-color: #F5F5F1;
 }
 
