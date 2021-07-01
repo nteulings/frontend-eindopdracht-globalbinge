@@ -29,16 +29,16 @@ export default function SignUp() {
 
     async function onSubmit(data) {
         setError('');
-        toggleLoading(true);
+        toggleLoading(false);
         console.log("what is data", data)
 
         try {
             const response = await axios.post("https://polar-lake-14365.herokuapp.com/api/auth/signup",
                 {
-                    email: data.email,
                     username: data.username,
+                    email: data.email,
                     password: data.password,
-                    // role: user???
+                    role: ["user"]
                 });
             console.log(response);
 
@@ -103,14 +103,14 @@ export default function SignUp() {
             </select>
             <label className={"checkbox-container"}>
                 <h3>I have completed this form truthfully.</h3>
-            <input
+            <input className={"checkmark"}
                 type="checkbox"
                 name={"checked"}
                 // checked={"checked"}
                 {...register("checked",
                     {required: true})}
                 />
-                {/*<span className="checkmark"></span>*/}
+                <span className="checkmark"> </span>
             </label>
 
             <button
