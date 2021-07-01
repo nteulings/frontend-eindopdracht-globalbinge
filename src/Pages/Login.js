@@ -2,22 +2,40 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import "./Forms.css"
+import axios from "axios";
 
-// [x] change to hook-form
-//    [x]  change fields form
-//    [x]  basic css styling
-// [x] install react hook form
-// [x] setup useform
+// - [x] import axios
+// - [x] Make asynch function
+// - [x] try / catch block
+// - [x] try: POST request to endpoint:https://polar-lake-14365.herokuapp.com/api/auth/signin
+//     - [x] POST request username & password)
+// - [x] what is response. success:
+// - [ ] pass token to context:
+//     - [ ] import useContext en AuthContext
+// - [ ] Destructure login function
+// - [ ] call login function when success + token??
+// ---
 // [ ] set errors and validation
 // [ ] set error messages
 
 function SignIn() {
-   const { handleSubmit, register, formState: { errors }} = useForm();
+   const { handleSubmit, register } = useForm();
 
-   function onSubmit(data) {
-       console.log(data)
+   async function onSubmit(data) {
+       try{
+           console.log("data form:", data);
+           const response = axios.post("https://polar-lake-14365.herokuapp.com/api/auth/signin",
+               {
+                username: data.username,
+                password: data.password,
+               })
+           console.log("what is response", (await response).data.accessToken);
+
+       } catch (error) {
+           console.log(error)
+       }
+
    }
-    console.log("wat is errors", errors)
 
     return (
         <>
