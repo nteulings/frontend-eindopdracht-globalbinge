@@ -5,15 +5,15 @@ import About from "./Pages/About";
 import Countries from './Pages/Countries';
 import Login from './Pages/Login';
 import HomePage from "./Pages/Landingpage";
+import Register from "./Pages/Register";
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
 } from 'react-router-dom';
 
 function App() {
   return (
-      <Router>
+      <>
           <TopMenu />
 
           <Switch>
@@ -29,8 +29,11 @@ function App() {
               <Route path="/login">
                   <Login />
               </Route>
+              <Route path="/register">
+                  <Register />
+              </Route>
           </Switch>
-      </Router>
+      </>
   );
 }
 
