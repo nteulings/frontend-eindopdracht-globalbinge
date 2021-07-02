@@ -6,6 +6,7 @@ import Countries from './Pages/Countries';
 import Login from './Pages/Login';
 import HomePage from "./Pages/Landingpage";
 import Register from "./Pages/Register";
+import Profile from "./Pages/Profile";
 import {
     Switch,
     Route,
@@ -31,6 +32,9 @@ function App() {
               </Route>
               <Route path="/register">
                   <Register />
+              </Route>
+              <Route path="/profile">
+                  <Profile />
               </Route>
           </Switch>
       </>
