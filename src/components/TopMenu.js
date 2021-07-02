@@ -25,7 +25,10 @@ function TopMenu() {
                         <li>
                             <NavLink to="/login" activeClassName="active-link">Login</NavLink>
                         </li>
-                </ul>
+                        <li>
+                            <NavLink to="/profile" activeClassName="active-link">Profile</NavLink>
+                        </li>
+                    </ul>
                     <ImMenu id={'hamburger-menu'} size={40} />
             </div>
         </nav>
