@@ -4,27 +4,30 @@ import {useHistory} from "react-router-dom";
 
 // - [x] get token from local storage
 // - [x] check data on refresh
+// - [x] remove token with logout function
+// - [x] set authstate user to null
+// - [x] disabled deps error eslint
 
 export const authContext = createContext({});
 
 function AuthContextProvider({ children }) {
 
     const [authState, setAuthState] = useState({user: null, status: 'pending'});
-
     const history = useHistory();
 
     useEffect(() => {
-        // setTimeout(() =>
-        //     setAuthState({user: null, status: 'done'}), 2000);
         const token = localStorage.getItem("token");
-        login(token);
-        // no token? back to login
+        // // no token? back to login
         if (token) {
             login(token);
         } else {
-            setAuthState({user: null, status: "done"});
+            setAuthState({
+                user: null,
+                status: "done"
+            })
             history.push("/login");
-            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     function login(token, id) {
@@ -56,7 +59,9 @@ function AuthContextProvider({ children }) {
 
 
     function logout() {
-
+    localStorage.removeItem('token');
+    setAuthState({user: null, status: "done"});
+    history.push("/login")
     }
 
     // data in context
