@@ -1,20 +1,9 @@
 import React, {createContext, useEffect, useState} from "react";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
-// import jwt_decode from "jwt-decode";
 
-// #context logic for login
-// - [x] make token available from context
-// - [x] put token in locale storage
-// -  [x] userdata
-// - [x] import axios
-// - [x] make asynch function and call from login
-// - [x] try / catch
-// - [x] try: axios GET request endpoint http://localhost:3000/600/users/${id} and send token
-//     - [x] request data in state and context
-// - [x] Link user to profile page
-// - [x] make token available in local storage.
-
+// - [x] get token from local storage
+// - [x] check data on refresh
 
 export const authContext = createContext({});
 
@@ -25,8 +14,17 @@ function AuthContextProvider({ children }) {
     const history = useHistory();
 
     useEffect(() => {
-        setTimeout(() =>
-            setAuthState({user: null, status: 'done'}), 2000);
+        // setTimeout(() =>
+        //     setAuthState({user: null, status: 'done'}), 2000);
+        const token = localStorage.getItem("token");
+        login(token);
+        // no token? back to login
+        if (token) {
+            login(token);
+        } else {
+            setAuthState({user: null, status: "done"});
+            history.push("/login");
+            }
     }, []);
 
     function login(token, id) {
