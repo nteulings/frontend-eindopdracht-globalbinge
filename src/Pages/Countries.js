@@ -2,9 +2,13 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 const apiKey = `${process.env.REACT_APP_API_KEY}`
 
+// trigger rerender
+// - [x] import useState & make state
+// - [x] set state
+
 
 // fetch country data
-// - [x] set ApiKey in .env and make variable apiKey
+// - [x] set api key in .env and make variable
 // - [x] import useeffect
 // - [x] set a useeffect to trigger onMount
 // - [x] write a asynch function
@@ -14,10 +18,13 @@ const apiKey = `${process.env.REACT_APP_API_KEY}`
 
 
 function Countries() {
+    const [countryData, setCountryData] = useState ({});
+    console.log('what is the state', countryData)
+
 
 useEffect(() => {
     async function fetchCountryData() {
-        console.log("on mount");
+    console.log("on mount");
             const response = await axios.get('https://unogsng.p.rapidapi.com/countries'
                 , {
                     headers: {
@@ -26,6 +33,7 @@ useEffect(() => {
                     }
                 });
             console.log('what is response', response.data.results);
+            setCountryData(response.data.results);
         }
         fetchCountryData();
     }, [ ]);
@@ -36,6 +44,5 @@ useEffect(() => {
     <h1>Countries</h1>
     </div>
     );
-}
-
+        }
 export default Countries
