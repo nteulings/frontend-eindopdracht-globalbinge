@@ -2,10 +2,13 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 const apiKey = `${process.env.REACT_APP_API_KEY}`
 
+// present data
+// - [x] conditional if no data
+// - [x] map countryData
+
 // trigger rerender
 // - [x] import useState & make state
 // - [x] set state
-
 
 // fetch country data
 // - [x] set api key in .env and make variable
@@ -18,7 +21,7 @@ const apiKey = `${process.env.REACT_APP_API_KEY}`
 
 
 function Countries() {
-    const [countryData, setCountryData] = useState ({});
+    const [countryData, setCountryData] = useState (null);
     console.log('what is the state', countryData)
 
 
@@ -42,6 +45,15 @@ useEffect(() => {
     return (
     <div>
     <h1>Countries</h1>
+        <div>
+            { countryData ? (
+                countryData.map((countryData) => {
+                    return <h3 key={countryData.id}>
+                        {countryData.country}</h3>
+                })
+            ) : (<h1>Loading...</h1>
+            )}
+        </div>
     </div>
     );
         }
