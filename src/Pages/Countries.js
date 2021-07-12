@@ -1,5 +1,7 @@
 import React, {useState, useEffect, createContext} from 'react';
 import axios from "axios";
+import "./Countries.css"
+
 const apiKey = `${process.env.REACT_APP_API_KEY}`
 
 // - [x] added variable for countryName
@@ -12,18 +14,19 @@ const apiKey = `${process.env.REACT_APP_API_KEY}`
 // - [x] export context
 
 export const countryDataContext = createContext({});
+// console.log("whatiscountrydatacontext", countryDataContext);
 
 function Countries() {
     const [countryData, setCountryData] = useState (null);
     const [countryID, setCountryId] = useState('67')
-    const [countryName, setCountryName] = useState("The Netherlands")
-    console.log('what is countryData', countryData);
+    const [countryName, setCountryName] = useState("Netherlands")
+    // console.log('what is countryData', countryData);
     console.log('countryId?', countryID);
     console.log('countryName?', countryName);
 
 useEffect(() => {
     async function fetchCountryData() {
-    console.log("on mount");
+    // console.log("on mount");
             const response = await axios.get('https://unogsng.p.rapidapi.com/countries'
                 , {
                     headers: {
@@ -31,38 +34,35 @@ useEffect(() => {
                         'x-rapidapi-host': 'unogsng.p.rapidapi.com'
                     }
                 });
-            console.log('what is response', response.data.results);
             setCountryData(response.data.results);
-        }
+            console.log("what is setCountry.data", response.data.results)
+    }
         fetchCountryData();
-    }, [ ]);
+    }, []);
 
 
     return (
-    <countryDataContext.Provider
-        value={{countryData, setCountryData, countryName, setCountryName, countryID, setCountryId}}
-        >
-        <div>
-    <h1>Countries</h1>
-        <h3>select a country from which you want to see new and expiring netflix content</h3>
-        <div>
+    <main className={"countrylist"}>
+        <h1 className={"title"}>Countries</h1>
+        <h3 className={"description"}>select a country from which you want to see new and expiring netflix content</h3>
+        <section className={"countrylist-container"}>
             { countryData ? (
                 countryData.map((countryData) => {
                     return (
-                    <ul key={countryData.id}>
-                    <li>
-                        <button className={"countryList"} type={"button"} onClick={() => {setCountryId(countryData.id); setCountryName(countryData.country)}}>
-                        {countryData.country}
+                        <button
+                            key={countryData.id}
+                            className={"country-button"}
+                            type={"button"}
+                            onClick={() => {setCountryId(countryData.id); setCountryName(countryData.country)}}>
+                            {countryData.country}
+
                         </button>
-                    </li>
-                    </ul>
                     )
                 })
             ) : (<h1>Loading...</h1>
             )}
-        </div>
-    </div>
-    </countryDataContext.Provider>
+        </section>
+    </main>
     );
         }
 export default Countries
