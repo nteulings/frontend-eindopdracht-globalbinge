@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../context/AuthContext';
+import "./Profile.css"
 
 // #Userdata from context to profile
 // - [x] import useContext function and authContext
@@ -12,18 +13,13 @@ function Profile() {
     console.log("what is authcontext", user)
 
     return (
-        <>
-            <h1>Your profile</h1>
-            <section>
-                <h2>Gegevens</h2>
-                <>
-                    <p><strong>Username:</strong> {user?.username}</p>
-                    <p><strong>Email:</strong> {user?.email}</p>
-                </>
-            </section>
+        <article className={"profile-container"}>
+            <h1 className={"title"}>Your profile</h1>
+                    <h3><strong>Username:</strong> {user?.username}</h3>
+                    <h3><strong>Email:</strong> {user?.email}</h3>
 
-            <p>Terug naar de <Link to="/">Homepagina</Link></p>
-        </>
+            <h3>Back to <Link to="/">homepage</Link></h3>
+        </article>
     );
 }
 

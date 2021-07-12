@@ -1,0 +1,17 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    background-color: black;
+    padding: 35px;
+    width: 400px;
+    border-radius: 6px;
+}
+p ~ Link {
+    text-underline: white;
+}
+
+p ~ Link {
+    color: red;
+}
