@@ -8,6 +8,8 @@ import { authContext} from "../context/AuthContext";
 // - [x] add useContext for userdata
 // - [x] get user data from context
 // - [x] change navigation menu when logged in and logged out
+// - [x] make search available
+// - [x] delete home and add navigation to /home to logo.
 
 function TopMenu() {
     const { logout, authState: { user } } = useContext(authContext);
@@ -15,26 +17,27 @@ function TopMenu() {
     return (
         <nav>
             <div className="nav-container">
-                <img src={Logo} alt="Logo" id={"logo"}/>
+                <NavLink to="/" exact><img src={Logo} alt="Logo" id={"logo"}/></NavLink>
                     <ul>
-                        <li>
-                            <NavLink to="/" exact activeClassName="active-link">Home</NavLink>
-                        </li>
-
                         <li>
                             <NavLink to="/about" activeClassName="active-link">About</NavLink>
                         </li>
+
                         { user &&
-                        <li>
-                            <NavLink to="/countries" activeClassName="active-link">Countries</NavLink>
-                        </li>
+                        <>
+                            <li>
+                                <NavLink to="/countries" activeClassName="active-link">Countries</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/search" activeClassName="active-link">Search</NavLink>
+                            </li>
+                        </>
                         }
                         {!user ?
                             <>
                             <li>
                                 <NavLink to="/login" activeClassName="active-link">Login</NavLink>
                             </li>
-
                             <li>
                                 <NavLink to="/register" activeClassName="active-link">Register</NavLink>
                             </li>
