@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 const apiKey = `${process.env.REACT_APP_API_KEY}`
 
@@ -11,7 +11,12 @@ const apiKey = `${process.env.REACT_APP_API_KEY}`
 // [x] call it in the useEffect
 // [x] check data
 
+// [x] make a state
+// [x] set state
+
 function SearchMovies() {
+    const [queryResults, setQueryResults] = useState(null);
+    console.log('what is the state',queryResults);
     useEffect(() => {
     async function fetchSearchMovies() {
         console.log("on mount");
@@ -31,6 +36,7 @@ function SearchMovies() {
             });
         // console.log("response SearchMovies",response);
         console.log('what is response.data.results', response.data.results);
+        setQueryResults(response.data.results)
     }
     fetchSearchMovies();
     // eslint-disable-next-line
