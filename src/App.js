@@ -4,9 +4,11 @@ import TopMenu from '../src/components/TopMenu'
 import About from "./Pages/About";
 import Countries from './Pages/Countries';
 import Login from './Pages/Login';
-import HomePage from "./Pages/Landingpage";
+import HomePage from "./Pages/Home";
 import Register from "./Pages/Register";
 import Profile from "./Pages/Profile";
+import Search from "./Pages/Search";
+
 import {
     Switch,
     Route,
@@ -16,7 +18,6 @@ function App() {
   return (
       <>
           <TopMenu />
-
           <Switch>
               <Route exact path="/">
                   <HomePage />
@@ -26,6 +27,9 @@ function App() {
               </Route>
               <Route path="/countries">
                   <Countries />
+              </Route>
+              <Route path="/search">
+                  <Search />
               </Route>
               <Route path="/login">
                   <Login />
