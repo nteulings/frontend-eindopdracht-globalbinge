@@ -51,7 +51,7 @@ function AuthContextProvider({ children }) {
             // console.log(response.data.username);
             setAuthState({ user: response.data, status: "done" });
 
-            history.push('/profile');
+            history.push('/loginSuccess');
         } catch(e) {
             console.error(e);
         }
@@ -69,7 +69,7 @@ function AuthContextProvider({ children }) {
 
     return (
         <authContext.Provider value={data}>
-            {authState.status === 'pending' && <h1>fetching</h1>}
+            {authState.status === 'pending' && <h1>Loading</h1>}
             {authState.status === "done" && children}
         </authContext.Provider>
     )
