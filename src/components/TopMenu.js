@@ -19,10 +19,14 @@ function TopMenu() {
             <div className="nav-container">
                 <NavLink to="/" exact><img src={Logo} alt="Logo" id={"logo"}/></NavLink>
                     <ul>
-                        <li>
-                            <NavLink to="/about" activeClassName="active-link">About</NavLink>
-                        </li>
-
+                        <>
+                            <li>
+                                <NavLink to="/about" activeClassName="active-link">About</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/detailinfo" activeClassName="active-link">Detailinfo</NavLink>
+                            </li>
+                        </>
                         { user &&
                         <>
                             <li>
@@ -34,21 +38,21 @@ function TopMenu() {
                         </>
                         }
                         {!user ?
-                            <>
+                        <>
                             <li>
                                 <NavLink to="/login" activeClassName="active-link">Login</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/register" activeClassName="active-link">Register</NavLink>
                             </li>
-                            </>
-                            :
-                            <>
+                        </>
+                        :
+                        <>
                             <li>
-                            <NavLink to="/profile" activeClassName="active-link">Profile</NavLink>
+                                <NavLink to="/profile" activeClassName="active-link">Profile</NavLink>
                             </li>
                             <li>
-                            <NavLink to="/login" activeClassname={"active-link"} onClick={logout} >Logout</NavLink>
+                                <NavLink to="/login" activeClassname={"active-link"} onClick={logout} >Logout</NavLink>
                             </li>
                             </>
                         }
