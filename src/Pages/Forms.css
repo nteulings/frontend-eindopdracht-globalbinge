@@ -41,14 +41,17 @@ button {
     transition-duration: 0.4s;
 }
 
-button:hover{
+button:enabled:hover{
     background-color: #E50914;
+}
 
+button:disabled {
+    cursor: unset;
 }
 
 p {
     margin: auto;
-    font-size: 0.75em;
+    font-size: 1em;
     font-weight: lighter;
 }
 

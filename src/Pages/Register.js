@@ -15,8 +15,8 @@ import axios from "axios";
 // - [x] redirect to login with delay
 // - [X] set errors en loading
 // ----
-// - [ ] set errors and validation
-// - [ ] set error messages
+// - [x] set errors and validation
+// - [x] set error messages
 // - [ ] set css error messages
 
 
@@ -24,8 +24,11 @@ export default function SignUp() {
     const [ loading, toggleLoading] = useState(false)
     const [ error, setError ] = useState('')
     const history = useHistory()
-    const { register, handleSubmit } = useForm();
+    const { handleSubmit, formState: { errors }, register } = useForm({mode:"onChange"});
     const [ registerSuccess, toggleRegisterSuccess ] = useState(false)
+    console.log(errors);
+    console.log(error);
+
 
     async function onSubmit(data) {
         setError('');
@@ -43,8 +46,8 @@ export default function SignUp() {
             console.log(response);
 
             toggleRegisterSuccess(true);
-
-            setTimeout(() => history.push('/login'), 2000);
+            history.push('/registersuccess')
+            // setTimeout(() => history.push('/login'), 2000);
 
         } catch(e) {
             console.error(e);
@@ -67,10 +70,21 @@ export default function SignUp() {
                 placeholder="username"
                 name={"username"}
                 {...register("username",
-                    {required: true, maxLength: 8})}
+                    {
+                    required: {
+                    value: true,
+                    message: 'username is required'},
+                    maxLength: {
+                    value: 8,
+                    message: 'username may not exceed 8 characters'},
+                    minLength: {
+                    value: 3,
+                    message: 'username must contain at least 3 characters'}
+                    })}
             />
+                {errors.username && <p className={"error"}>{errors.username.message}</p>}
 
-            <label htmlFor={"email-field"}>
+                <label htmlFor={"email-field"}>
                 <h3>Your email adress</h3>
             </label>
 
@@ -80,10 +94,19 @@ export default function SignUp() {
                 placeholder="email adress"
                 name="email"
                 {...register("email",
-                    {required: true, maxLength: 64})}
-            />
+                    {
+                        required: {
+                        value: true,
+                        message: 'email address is required'},
+                        maxLength: {
+                        value: 64,
+                        message: 'this field has a maximum of 64 characters'},
+                    })}
+                />
+                {errors.email && <p className={"error"}>{errors.email.message}</p>}
 
-            <label htmlFor={"password-field"}>
+
+                <label htmlFor={"password-field"}>
                 <h3>Fill in your password:</h3>
             </label>
 
@@ -93,30 +116,47 @@ export default function SignUp() {
                 placeholder="password"
                 name={"password"}
                 {...register("password",
-                    {required: true, min: 6, maxLength: 8})}
+                    {
+                        required: {
+                            value: true,
+                            message: 'please fill in a password'},
+                            maxLength: {
+                            value: 8,
+                            message: 'password between 6 and 8 characters'},
+                            minLength: {
+                            value: 6,
+                            message: 'password between 6 and 8 characters'}
+                    })}
             />
-            {/*get from api?*/}
+                {errors.password && <p className={"error"}>{errors.password.message}</p>}
+
+                {/*get from api?*/}
             <label><h3>Select your country of origin:</h3></label>
             <select>
                 <option value="Netherlands">Netherlands</option>
                 <option value="Germany"> Germany</option>
             </select>
             <label className={"checkbox-container"}>
-                <h3>I have completed this form truthfully.</h3>
+                <p><strong>I have completed this form truthfully.</strong></p>
             <input className={"checkmark"}
                 type="checkbox"
                 name={"checked"}
                 // checked={"checked"}
                 {...register("checked",
-                    {required: true})}
-                />
+                    {
+                        required: {
+                            value: true,
+                            message: 'you must confirm you are honest'},
+                    })}
+            />
+                {errors.checked && <p className={"error"}>{errors.checked.message}</p>}
+
                 <span className="checkmark"> </span>
             </label>
 
             <button
                 type={"submit"}
                 className={"form-button"}
-                disabled={loading}
             >
                 {loading ? 'sending...' : "sign up"}
             </button>
@@ -124,7 +164,8 @@ export default function SignUp() {
             <p>already have an account login <Link to="/login">here</Link></p>
                 {registerSuccess === true &&  <p>Successfully registered, you will be redirected to the login page</p>}
                 {error && <p className="error-message">{error}</p>}
-        </form>
+
+            </form>
         </>
     );
 }
