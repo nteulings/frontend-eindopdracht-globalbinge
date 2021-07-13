@@ -1,0 +1,10 @@
+.message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+    background-color: #B81D24;
+    padding: 35px;
+    width: auto;
+    justify-content: space-between;
+}
