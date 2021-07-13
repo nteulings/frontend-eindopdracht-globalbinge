@@ -63,6 +63,12 @@ form h1 {
     margin-bottom: 20px;
 }
 
+.error-message {
+    padding-top: 10px;
+    color: #E50914;
+    text-align: center;
+}
+
 /*checkbox styling*/
 /* The container */
 .checkbox-container {
