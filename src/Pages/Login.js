@@ -1,30 +1,23 @@
-import React, { useContext } from 'react';
+import React, {useContext, useState} from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import "./Forms.css"
 import axios from "axios";
 import { authContext } from "../context/AuthContext";
 
-// - [x] import axios
-// - [x] Make asynch function
-// - [x] try / catch block
-// - [x] try: POST request to endpoint:https://polar-lake-14365.herokuapp.com/api/auth/signin
-//     - [x] POST request username & password)
-// - [x] what is response. success:
-// - [x] pass token to context:
-//     - [x] import useContext en AuthContext
-//     - [x] Destructure login function
-// - [ ] call login function when success + token??
-// ---
 // [ ] set errors and validation
 // [ ] set error messages
 
 function SignIn() {
-   const { handleSubmit, register } = useForm();
+   const { handleSubmit, formState: { errors }, register } = useForm({mode:"onChange"});
    const { login } = useContext(authContext);
-   console.log("what is", login)
+   const [ loading, toggleLoading] = useState(false)
+   const [ error, setError ] = useState('')
+console.log(error);
 
    async function onSubmit(data) {
+       setError('');
+       toggleLoading(true);
        try{
            console.log("data form:", data);
            const response = axios.post("https://polar-lake-14365.herokuapp.com/api/auth/signin",
@@ -32,12 +25,18 @@ function SignIn() {
                 username: data.username,
                 password: data.password,
                })
-           console.log("what is response", (await response).data.accessToken);
-           login((await response).data.accessToken);
-       } catch (error) {
-           console.log(error)
-       }
+           // console.log(response);
+           // console.log("what is response token", (await response).data.accessToken);
+           // console.log("what is response.data", (await response).data);
 
+           const token = (await response).data.accessToken;
+           const id = ((await response).data.id);
+           login(token,id);
+       } catch(e) {
+           console.error(e)
+           setError(`Login failed, try again (${e.message})`);
+       }
+       toggleLoading(false);
    }
 
     return (
@@ -55,11 +54,20 @@ function SignIn() {
                 placeholder="username"
                 name={"username"}
                 {...register("username",
-                    {required: true, maxLength: 8})}
+                    {
+                        required: {
+                            value: true,
+                            message: 'username is required'},
+                        maxLength: {
+                            value: 8,
+                            message: 'username may not exceed 8 characters'},
+                        minLength: {
+                            value: 3,
+                            message: 'username must contain at least 3 characters'}
+                    })}
                 />
-            <span>
-                {/*{error-message}*/}
-            </span>
+            {errors.username && <p className={"error"}>{errors.username.message}</p>}
+
             <label htmlFor={"password-field"}>
                 <h3>Fill in your password:</h3>
             </label>
@@ -69,16 +77,28 @@ function SignIn() {
                 placeholder="password"
                 name={"password"}
                 {...register("password",
-                    {required: true, min: 6, maxLength: 8})} />
-            <span>
-                {/*{message}*/}
-            </span>
+                    {
+                        required: {
+                            value: true,
+                            message: 'please fill in a password'},
+                        maxLength: {
+                            value: 8,
+                            message: 'password between 6 and 8 characters'},
+                        minLength: {
+                            value: 6,
+                            message: 'password between 6 and 8 characters'}
+                    })}
+            />
+            {errors.password && <p className={"error"}>{errors.password.message}</p>}
             <button
+                type={"submit"}
                 className={"form-button"}
-                onClick={console.log()}
-            >sign in</button>
-            <p>don't have an account yet? register <Link to="/register">here</Link>
-            </p>
+                disabled={loading}
+            >
+                {loading ? 'Sending...' : 'Login'}
+                </button>
+            <p>don't have an account yet? register <Link to="/register">here</Link></p>
+            {error && <p className="error-message">{error}</p>}
         </form>
         </>
     );
