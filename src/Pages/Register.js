@@ -4,35 +4,19 @@ import "./Forms.css";
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
 
-// authentication:
-// - [x] install axios
-// - [x] import axios
-// - [x] Make asynch function
-// - [x] try / catch block
-// - [x] try: POST request to endpoint:https://polar-lake-14365.herokuapp.com/api/auth/signup
-//     - [x] POST request username & password)
-// - [x] success message user
-// - [x] redirect to login with delay
-// - [X] set errors en loading
-// ----
-// - [x] set errors and validation
-// - [x] set error messages
-// - [ ] set css error messages
-
-
 export default function SignUp() {
     const [ loading, toggleLoading] = useState(false)
     const [ error, setError ] = useState('')
     const history = useHistory()
     const { handleSubmit, formState: { errors }, register } = useForm({mode:"onChange"});
     const [ registerSuccess, toggleRegisterSuccess ] = useState(false)
-    console.log(errors);
-    console.log(error);
+    // console.log(errors);
+    // console.log(error);
 
 
     async function onSubmit(data) {
         setError('');
-        toggleLoading(false);
+        toggleLoading(true);
         console.log("what is data", data)
 
         try {
@@ -157,6 +141,7 @@ export default function SignUp() {
             <button
                 type={"submit"}
                 className={"form-button"}
+                disabled={loading}
             >
                 {loading ? 'sending...' : "sign up"}
             </button>
