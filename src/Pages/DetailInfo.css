@@ -1,0 +1,14 @@
+.detailinfo-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    margin: auto;
+}
+
+header {
+    min-width: 100%;
+    text-align: center    }
+
+aside {
+    min-width: 50%;
+}
