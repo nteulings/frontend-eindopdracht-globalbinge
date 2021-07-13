@@ -8,6 +8,7 @@ const apiKey = `${process.env.REACT_APP_API_KEY}`
 
 function ExpMovies() {
     const [expMoviesData, setExpMoviesData] = useState(null);
+    console.log("expMoviesData", expMoviesData)
     // const expTitleIds = expMoviesData.map((id) => {return id.netflixid});
     // console.log("what is expTitleIds", expTitleIds)
     // const today = new Date();
@@ -16,7 +17,7 @@ function ExpMovies() {
     useEffect(() => {
         async function fetchExpMovies() {
             console.log("on mount");
-            console.log("what is expmoviesdata", expMoviesData)
+            // console.log("what is expmoviesdata", expMoviesData)
             const response = await axios.get('https://unogsng.p.rapidapi.com/expiring'
                 , {
                     params: {countrylist: '67'},
@@ -26,14 +27,16 @@ function ExpMovies() {
                     }
                 });
             setExpMoviesData(response.data.results);
-            console.log("", response)
-            // gives an object with array of results
+            // console.log("expMoviesData", expMoviesData);
+            // gives an object with array of results {netflixid:}
+            // gives an object with array of results {nfid:}
+            // set as prop in async function "title details"
+            // movieposterslider on click detailinfo
         }
 
         fetchExpMovies();
         // eslint-disable-next-line
     }, []);
-
 
     return (
         <h1>expiring movies</h1>
