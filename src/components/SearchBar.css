@@ -1,0 +1,30 @@
+.searchbar {
+    display: block;
+    width: 500px;
+    margin: auto;
+}
+
+
+.searchbar input {
+    display: flex;
+    align-content: center;
+    border-radius: 2px 0 0 2px;
+    border: none;
+    padding: 8px 16px;
+    width: 100%;
+    outline: none;
+}
+
+.searchbar button {
+    border-radius: 0 2px 2px 0;
+    display: inline-block;
+    border: none;
+    padding: 8px 16px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.searchbar input {
+    font-size: 1.5em;
+}
