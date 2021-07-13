@@ -8,6 +8,9 @@ import HomePage from "./Pages/Home";
 import Register from "./Pages/Register";
 import Profile from "./Pages/Profile";
 import Search from "./Pages/Search";
+import DetailInfo from "./Pages/DetailInfo";
+import LoginSuccess from "./Pages/LoginSuccess";
+import RegisterSuccess from "./Pages/RegisterSuccess"
 
 import {
     Switch,
@@ -21,6 +24,15 @@ function App() {
           <Switch>
               <Route exact path="/">
                   <HomePage />
+              </Route>
+              <Route path="/registersuccess">
+                  <RegisterSuccess />
+              </Route>
+              <Route path="/loginsuccess">
+                  <LoginSuccess />
+              </Route>
+              <Route path="/detailinfo">
+                  <DetailInfo />
               </Route>
               <Route path="/about">
                   <About />
