@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/globalbing-logo.png'
+import {Link} from 'react-router-dom';
 
 
 function About() {
@@ -7,8 +8,9 @@ function About() {
         <div className="page-container">
             <h1>About</h1>
             <img src={logo} alt={"<h1>Globalbinge</h1>"}/>
-            <p>Morbi magna felis, finibus vel urna sit amet, ornare interdum nulla. Duis fringilla lacus ac commodo ullamcorper. Maecenas gravida tincidunt purus eu dapibus. Phasellus a eros tincidunt urna finibus pellentesque. Phasellus pharetra tincidunt orci, vitae efficitur massa faucibus sed. Suspendisse id elit nec augue luctus vestibulum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            <p>Vivamus a interdum ex. Integer lacus nulla, feugiat ac justo a, convallis molestie neque. Suspendisse ac elit mollis, bibendum purus at, vulputate nisi. Pellentesque ornare libero neque, dignissim gravida dolor finibus id. Proin finibus rhoncus commodo. Nunc sit amet condimentum libero, quis rutrum felis. Aliquam ornare nibh non est viverra, vel fermentum leo hendrerit. In pretium vitae dolor non elementum. Ut ullamcorper efficitur felis, ac posuere mauris fermentum sit amet.</p>
+            <h3>Bingewatching around the world!</h3>
+            <p>When you log in to Netflix you will only see the content that is available in your country. It is not possible to search for movie and series titles outside your country. This application lets you search the entire content of Netflix and also shows you where this content is available. You can also select a country of your choice and display the newest and expirig titles.</p>
+            <p>These features are only available when you have an account of GlobalBinge. Don't have an account yet? no problem you can register <Link to="/register">here</Link>. Already have an account? then log in <Link to="/login">here</Link>. Have fun using GlobalBinge!</p>
         </div>
     );
 }
