@@ -1,28 +1,20 @@
-import React, {useState, useEffect, createContext} from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import "./Countries.css"
+import "./Countries.css";
 
 const apiKey = `${process.env.REACT_APP_API_KEY}`
 
-// - [x] added variable for countryName
-
-// create contextProvider for countryID and data
-// - [x] import createcontext
-// - [x] make context
-// - [x] set contextProvider
-// - [x] values
-// - [x] export context
-
-export const countryDataContext = createContext({});
-// console.log("whatiscountrydatacontext", countryDataContext);
+// -[ ] order results alphabetically?
 
 function Countries() {
     const [countryData, setCountryData] = useState (null);
-    const [countryID, setCountryId] = useState('67')
-    const [countryName, setCountryName] = useState("Netherlands")
+    const history = useHistory();
+    // const [countryID, setCountryId] = useState('67')
+    // const [countryName, setCountryName] = useState("Netherlands")
     // console.log('what is countryData', countryData);
-    console.log('countryId?', countryID);
-    console.log('countryName?', countryName);
+    // console.log('countryId?', countryID);
+    // console.log('countryName?', countryName);
 
 useEffect(() => {
     async function fetchCountryData() {
@@ -41,7 +33,12 @@ useEffect(() => {
     }, []);
 
 
+// const getCountryIDName = () => {
+//     setCountryId(countryData.id);
+//     setCountryName(countryData.country)}
+
     return (
+        // <countryDataContext.Provider value={countryID}>
     <main className={"countrylist"}>
         <h1 className={"title"}>Countries</h1>
         <h3 className={"description"}>select a country from which you want to see new and expiring netflix content</h3>
@@ -53,16 +50,16 @@ useEffect(() => {
                             key={countryData.id}
                             className={"country-button"}
                             type={"button"}
-                            onClick={() => {setCountryId(countryData.id); setCountryName(countryData.country)}}>
+                            onClick={() => {history.push(`/countries/${countryData.id}/${countryData.country}`)}}>
                             {countryData.country}
-
                         </button>
-                    )
+                            )
                 })
             ) : (<h1>Loading...</h1>
             )}
         </section>
     </main>
+        // </countryDataContext.Provider>
     );
         }
 export default Countries
