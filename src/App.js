@@ -11,7 +11,7 @@ import Search from "./Pages/Search";
 import DetailInfo from "./Pages/DetailInfo";
 import LoginSuccess from "./Pages/SuccessPages/LoginSuccess";
 import RegisterSuccess from "./Pages/SuccessPages/RegisterSuccess"
-import ExpMovies from "./components/ExpMovies";
+import ContentPerCountry from "./components/ContentPerCountry";
 import SearchDetails from "./components/SearchDetails";
 import {
     Switch,
@@ -39,7 +39,7 @@ function App() {
                   <Countries />
               </Route>
               <Route exact path="/countries/:id/:name">
-                  <ExpMovies />
+                  <ContentPerCountry />
               </Route>
               <Route exact path="/search">
                   <Search />
