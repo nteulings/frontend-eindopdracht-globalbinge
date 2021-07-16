@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import {Link} from 'react-router-dom';
 import "./Forms.css"
 import axios from "axios";
-import { authContext } from "../context/AuthContext";
+import { authContext } from "../../context/AuthContext";
 
 // [ ] set errors and validation
 // [ ] set error messages

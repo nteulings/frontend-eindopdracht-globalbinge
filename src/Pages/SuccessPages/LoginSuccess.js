@@ -1,10 +1,11 @@
 import React, {useContext} from 'react';
-import { authContext } from '../context/AuthContext';
+import { authContext } from '../../context/AuthContext';
 import {useHistory} from "react-router-dom";
-import "./SuccessMessage.css";
+import "./SuccessPages.css";
 
-
-
+// to let the user know that the login was successful,
+// this page is displayed. after a short timeout,
+// the user is redirected to the homepage.
 
 function LoginSuccess() {
     const history = useHistory()
