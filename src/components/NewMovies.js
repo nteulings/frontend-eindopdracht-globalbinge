@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
+// import SearchBar from "./SearchBar";
+import imageNotAvailable from "../assets/Image-Not-Available.png";
 // import {countryDataContext} from "../Pages/Countries";
 const apiKey = `${process.env.REACT_APP_API_KEY}`
 
 
 function NewMovies() {
-    const [newMoviesData, setNewMoviesData] = useState (null);
+    const [newMoviesData, setNewMoviesData] = useState ([]);
     console.log("newMoviesData?", newMoviesData);
     // const [newTitlesIds, setNewTitlesIds] = useState({})
 
@@ -16,7 +18,6 @@ function NewMovies() {
             const response = await axios.get('https://unogsng.p.rapidapi.com/search'
                 , {
                     params: {
-                        start_year: '1972',
                         orderby: 'dateDesc',
                         limit: '20',
                         countrylist: '33',
@@ -29,9 +30,7 @@ function NewMovies() {
                     }
                 });
             setNewMoviesData(response.data.results);
-            // gives an object with array of results {nfid:}
-            // set as prop in async function "title details"
-            // movieposterslider on click detailinfo
+            // console.log("what is response.datar.results new movies", response.data.results);
 
         }
         fetchNewMovies();
@@ -39,8 +38,37 @@ function NewMovies() {
     }, []);
 
     return (
-        <h1>expiring movies</h1>
+        <div>
+            <h2>New Netflix content in //name</h2>
+            {newMoviesData ?
+                <h3>Globalbinge found {newMoviesData.length} title(s)</h3>
+                :
+                <h3>No results found</h3>}
+            <section className={"poster-container"}>
+                {newMoviesData ? (
+                    newMoviesData.map((newMoviesData) => {
+                        return (
+                            <ul className={"poster-images"}
+                                key ={newMoviesData.nfid}>
+                                <li className={"postercard"}>
+                                    <img className={"poster-image"}
+                                         src={(!newMoviesData.poster || newMoviesData.poster === "N/A") ? imageNotAvailable : newMoviesData.poster}
+                                         alt={newMoviesData.title}
+                                         // onClick={() => {history.push(`/search/${queryResults.nfid}/${queryResults.clist}`)}}
+                                    />
+                                    <h3 className={"poster-title"}>{newMoviesData.title}</h3>
+                                </li>
+                            </ul>
+                        );
+                    })
+                ) : (
+                    <h1>Results show up here</h1>
+                )}
+            </section>
+        </div>
     )
+    }
 
-}
+
+
 export default NewMovies;
