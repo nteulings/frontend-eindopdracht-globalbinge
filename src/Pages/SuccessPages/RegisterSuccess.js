@@ -1,10 +1,10 @@
 import React from 'react';
 import {useHistory} from "react-router-dom";
-import "./SuccessMessage.css";
+import "./SuccessPages.css";
 
-
-
-
+// to let the user know that registration was successful,
+// this page is displayed. after a short timeout,
+// the user is redirected to the login page.
 
 function RegisterSuccess() {
     const history = useHistory()
