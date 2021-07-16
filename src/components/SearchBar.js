@@ -26,15 +26,15 @@ function SearchBar({ setQueryHandler }) {
                 placeholder="Search for Netflix titles around the world"
             />
 
-         <button
-             disabled={!isEnabled}
-             type="button"
-             onClick={handleClick}
-         >
-        Zoek
-      </button>
-    </span>
-            );
-            }
+            <button
+                disabled={!isEnabled}
+                type="button"
+                onClick={handleClick}
+            >
+                Zoek
+            </button>
+        </span>
+    );
+}
 
 export default SearchBar;
