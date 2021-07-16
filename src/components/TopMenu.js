@@ -52,7 +52,7 @@ function TopMenu() {
                                 <NavLink to="/profile" activeClassName="active-link">Profile</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/login" activeClassname={"active-link"} onClick={logout} >Logout</NavLink>
+                                <NavLink to="/login" activeClassname="active-link" onClick={logout} >Logout</NavLink>
                             </li>
                             </>
                         }
