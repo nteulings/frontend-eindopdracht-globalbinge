@@ -1,11 +1,12 @@
 import { useHistory } from "react-router-dom";
 
+// This component button will bring the user back to the last page a user visited.
+// - [ ] prevent unmounting last page?
+
 function BackButton() {
     let history = useHistory();
 
     function handleClick() {
-        // <button onClick={() => history.goBack()}>Go Back</button>
-        // history.push("/home");
         history.goBack();
     }
 
