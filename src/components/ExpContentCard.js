@@ -1,20 +1,18 @@
 import React, {useEffect, useState} from 'react';
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 import imageNotAvailable from "../assets/Image-Not-Available.png";
-
 const apiKey = `${process.env.REACT_APP_API_KEY}`
 
-// - [x] seperate request for fetching title details with NetflixID
-// - [x] show results
-
-function MovieCard(props) {
+function ExpContentCard( {netflixId} ) {
     const [expResult, setExpResult] = useState()
-    console.log(props.netflixId);
+    const history = useHistory();
+    console.log(netflixId);
     useEffect(() => {
-        async function fetchMovieCard() {
+        async function fetchExpContentCard() {
             const response = await axios.get('https://unogsng.p.rapidapi.com/title', {
                 params: {
-                    netflixid: props.netflixId,
+                    netflixid: netflixId,
                 },
                 headers: {
                     'x-rapidapi-key': apiKey,
@@ -23,28 +21,25 @@ function MovieCard(props) {
             });
             console.log('FILM', response.data.results[0]);
             setExpResult(response.data.results[0])
-            console.log("What is expResult?", expResult)
         }
 
-        fetchMovieCard();
+        fetchExpContentCard();
         // eslint-disable-next-line
     }, []);
 
-
     return (
-        <div>
+        <>
             { expResult && (
             <li className={"postercard"}>
                 <img className={"poster-image"}
-
                 src={(!expResult.img || expResult.img === "N/A") ? imageNotAvailable : expResult.img} alt={expResult.title}
+                     onClick={() => {history.push(`/search/${expResult.netflixid}/${undefined}`)}}
                 />
                 <h3 className={"poster-title"}>{expResult.title}</h3>
             </li>
                 )}
-            <p>Filmdata!!</p>
-        </div>
+        </>
     )
 }
 
-export default MovieCard;
+export default ExpContentCard;
