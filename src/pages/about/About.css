@@ -1,0 +1,13 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    background-color: black;
+    padding: 35px;
+    max-width: 800px;
+    border-radius: 6px;
+}
+.quote {
+    padding-top: 20px;
+}
