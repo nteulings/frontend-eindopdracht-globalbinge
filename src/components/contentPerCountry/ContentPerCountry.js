@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axios from "axios";
-import LoadingSpinner from "./LoadingSpinner";
-import { useParams } from "react-router-dom";
-import imageNotAvailable from "../assets/Image-Not-Available.png";
 import ExpContentCard from "./ExpContentCard";
+import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
+import imageNotAvailable from "../../assets/ImageNotAvailable.png";
+import "./ContentPerCountry.css"
 const apiKey = `${process.env.REACT_APP_API_KEY}`
 const headers = {
     'x-rapidapi-key': apiKey,
@@ -20,7 +20,7 @@ function ContentPerCountry() {
     const history = useHistory();
 
     // Fetches expiring Netflix content per country
-    // passing id & name for fetching content info to ExpContentCard
+    // passing id & name to ExpContentCard
 
     useEffect(() => {
         async function fetchExpMovies() {
@@ -37,7 +37,6 @@ function ContentPerCountry() {
                     headers: headers
                 });
                     setExpMoviesData(response.data.results);
-                    console.log(response.data.results);
             } catch(e) {
               console.Error(e);
               setError(`Something went wrong! (${e.message})`);
@@ -72,7 +71,7 @@ function ContentPerCountry() {
                     setNewMoviesData(response.data.results);
             } catch(e) {
               console.Error(e);
-              setError(true);
+                setError(`Something went wrong! (${e.message})`);
             }
 
             toggleLoading(false);
@@ -87,7 +86,7 @@ function ContentPerCountry() {
             <h2>Expiring Netflix content in {name}</h2>
 
                 {expMoviesData ?
-                <h3>Globalbinge found {expMoviesData.length} title(s)</h3> :
+                <h3>GlobalBinge found {expMoviesData.length} title(s)</h3> :
                 <h3>No results found</h3>}
                 {loading && <LoadingSpinner/>}
                 {error && <h3 className="error-message">{error}</h3>}
@@ -108,36 +107,34 @@ function ContentPerCountry() {
 
             <h2>New Netflix content in {name}</h2>
                 {newMoviesData ?
-                    <h3>Globalbinge found {newMoviesData.length} title(s)</h3> :
+                    <h3>GlobalBinge found {newMoviesData.length} title(s)</h3> :
                     <h3>No results found</h3>}
                     {loading && <LoadingSpinner/>}
                     {error && <h3 className="error-message">{error}</h3>}
 
 
             <section className={"poster-container"}>
-                            {newMoviesData ? (
-                            newMoviesData.map((newMoviesData) => {
-                                return (
-                                    <ul className={"poster-images"}
-                                        key ={newMoviesData.nfid}>
-                                        <li className={"postercard"}>
-                                            <img className={"poster-image"}
-                                                 src={(!newMoviesData.poster || newMoviesData.poster === "N/A") ? imageNotAvailable : newMoviesData.poster}
-                                                 alt={newMoviesData.title}
-                                                 onClick={() => {history.push(`/search/${newMoviesData.nfid}/${newMoviesData.clist}`)}}
-                                            />
-                                                <h3 className={"poster-title"}>{newMoviesData.title}</h3>
-                                        </li>
-                                    </ul>
-                                );
-                            })
-                        ) : (
-                        <h1>Results show up here</h1>
-                        )}
-
-                        </section>
+                {newMoviesData ? (
+                    newMoviesData.map((newMoviesData) => {
+                        return (
+                            <ul className={"poster-images"}
+                                key ={newMoviesData.nfid}>
+                                <li className={"postercard"}>
+                                    <img className={"poster-image"}
+                                         src={(!newMoviesData.poster || newMoviesData.poster === "N/A") ? imageNotAvailable : newMoviesData.poster}
+                                         alt={newMoviesData.title}
+                                         onClick={() => {history.push(`/detailinfo/${newMoviesData.nfid}/${newMoviesData.clist}`)}}
+                                    />
+                                    <h3 className={"poster-title"}>{newMoviesData.title}</h3>
+                                </li>
+                            </ul>
+                        );
+                    })
+                    ) : (
+                    <h1>Results show up here</h1>
+                    )}
+            </section>
         </main>
-
         )
     };
 
