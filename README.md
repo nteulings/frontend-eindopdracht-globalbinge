@@ -37,7 +37,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![login](src/assets/demo/about.png)
 
 This react web application was built for a school assignment.
 It allows the user to search for Netflix titles all over the world
@@ -87,13 +87,32 @@ To get a local copy up and running follow these simple steps.
    ```
 
 ## Usage
-* LOGIN
-* REGISTER
-* COUNTRIES
+* LOGIN  
+  Login is required to use the application  
+  &nbsp;
+![login](src/assets/demo/login.png)
+  &nbsp;
+* REGISTER  
+  After signing up you will be redirected to the login page.  
+  &nbsp;
+  ![login](src/assets/demo/register.png)
+  &nbsp;
+* COUNTRIEs
+  After selecting a country New and expiring content will be displayed.  
+  &nbsp;
+  ![login](src/assets/demo/countries.png)
+  &nbsp;
 * SEARCH
-
+  The search page let you search for Netflix titles around the world  
+  &nbsp;  
+  ![login](src/assets/demo/search.png)
+  &nbsp;
+* DETAILINFO  
+  All titles (poster images) are clickable and detail information will be displayed.  
+  &nbsp;
+  ![login](src/assets/demo/detailinfo.png)
+  &nbsp;
 ## Available scripts
-## Available Scripts
 
 In the project directory, you can run:
 
