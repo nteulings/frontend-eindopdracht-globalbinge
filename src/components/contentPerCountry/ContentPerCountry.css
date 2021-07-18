@@ -1,74 +1,74 @@
-/*mobile*/
-
+/*all screens*/
 .poster-container {
+    display: flex;
+    margin: 20px auto;
     width: 90%;
+    flex-direction: row;
+    overflow: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    text-overflow: ellipsis;
+    align-items: center;
+}
+
+.poster-card {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.alt {
+    color: white;
 }
 
 .poster-image {
+    position: relative;
+    color: white;
+    margin-right: 20px;
     width: 125px;
     height: 180px;
+    text-align: start;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li img {
+    float: left;
+    display: block;
+    overflow: hidden;
+}
+
+li > img:hover {
+    outline: 4px solid #F5F5F1;
+    outline-offset: -4px;
+    cursor: pointer;
 }
 
 .poster-title {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
     width: 125px;
-   }
+    text-overflow: ellipsis;
+    margin-top: auto;
+    flex: 0 0 100%;
+}
 
 /*screen min-width: 575px*/
 
 @media screen and (min-width: 575px) {
+
     .poster-container {
-        display: flex;
-        margin: 20px auto;
         width: 75%;
-        flex-direction: row;
-        overflow: hidden;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-        text-overflow: ellipsis;
-        align-items: center;
-    }
-
-    .poster-card {
-        display: flex;
-        flex-wrap: nowrap;
-    }
-
-    .alt {
-        color: white;
     }
 
     .poster-image {
-        position: relative;
-        color: white;
-        margin-right: 20px;
         width: 180px;
         height: 260px;
-        text-align: start;
-    }
-
-    ul {
-        list-style-type: none;
-    }
-
-    li img {
-        float: left;
-        display: block;
-        overflow: hidden;
-    }
-
-    li > img:hover {
-        outline: 4px solid #F5F5F1;
-        outline-offset: -4px;
-        cursor: pointer;
     }
 
     .poster-title {
-        white-space: nowrap;
-        overflow: hidden;
-        display: inline-block;
         width: 200px;
-        text-overflow: ellipsis;
-        margin-top: auto;
-        flex: 0 0 100%;
     }
 }
