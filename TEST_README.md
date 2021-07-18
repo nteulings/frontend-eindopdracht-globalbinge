@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/nteulings/frontend-eindopdracht-globalbinge">
-    <img src="src/assets/globalbing-logo.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/globalbing-logo.png" alt="Logo" width="150">
   </a>
 
   <h3 align="center">GlobalBinge</h3>
