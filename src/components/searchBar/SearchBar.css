@@ -1,0 +1,37 @@
+.searchbar input {
+    width: auto;
+    padding: 8px 16px;
+}
+
+@media screen and (min-width: 575px) {
+    .searchbar {
+        display: block;
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .searchbar input {
+        background-image: ImSearch;
+        display: flex;
+        align-content: center;
+        border-radius: 2px 0 0 2px;
+        border: none;
+        width: 350px;
+        padding: 8px 16px;
+        outline: none;
+    }
+
+    .searchbar button {
+        border-radius: 0 2px 2px 0;
+        display: inline-block;
+        border: none;
+        padding: 8px 16px;
+        color: white;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .searchbar input {
+        font-size: 1em;
+    }
+}

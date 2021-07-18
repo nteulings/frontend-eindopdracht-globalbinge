@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
 
-function SearchBar({ setQueryHandler }) {
-    const [query, setQuery] = useState('');
+function SearchBar( { setQueryHandler } ) {
+    const [query, setQuery] = useState("");
     const isEnabled = query.length > 0;
 
     function handleClick() {
-        setQueryHandler(query);
+        query && setQueryHandler(query);
     }
 
     function keyPressCheck(e) {
         if (e.keyCode === 13) {
-            setQueryHandler(query);
+            query && setQueryHandler(query);
         }
     }
 
@@ -31,7 +31,7 @@ function SearchBar({ setQueryHandler }) {
                 type="button"
                 onClick={handleClick}
             >
-                Zoek
+                Search
             </button>
         </span>
     );
