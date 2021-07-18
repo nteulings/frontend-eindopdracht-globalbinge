@@ -1,12 +1,105 @@
-# Getting Started with Create React App
+<br />
+<p align="center">
+  <a href="https://github.com/nteulings/frontend-eindopdracht-globalbinge">
+    <img src="src/assets/globalbing-logo.png" alt="Logo" width="250">
+  </a>
+
+<h3 align="center">GlobalBinge</h3>
+
+  <p align="center">
+    This application lets you search for Netflix content around the world
+    <br />
+    <a href="https://github.com/nteulings/frontend-eindopdracht-globalbinge"><strong>Explore the docs »</strong></a>
+ </p>
+
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+This react web application was built for a school assignment.
+It allows the user to search for Netflix titles all over the world
+and also lists the new and almost expired content per country.
+This application uses an the [UnogsNG](https://rapidapi.com/unogs/api/unogsng/) API-key from [RapidApi](https://rapidapi.com)
+
+
+### Built With
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+* Nodejs is required. Before installing check if Nodejs is installed
+  open your terminal an run:
+
+    ```sh
+    node -v
+    ```
+  find more informationn about Nodejs [here]( https://nodejs.org/en/ )
+
+
+* For running the applicatie you need an API-key from [UnogsNG](https://rapidapi.com/unogs/api/unogsng/)
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/nteulings/frontend-eindopdracht-globalbinge.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+   a `node_modules` directory is created and all used dependencies will be installed.
+
+
+3. Place your API-key in the Environment variables
+
+* Copy the `.env.dist` file and rename to `.env` file
+  Place your API-key in place of `YOUR_API_KEY`
+   ```sh
+   REACT_APP_API_KEY=YOUR_API_KEY
+   ```
+
+## Usage
+* LOGIN
+* REGISTER
+* COUNTRIES
+* SEARCH
+
+## Available scripts
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+   ```sh
+   npm start
+   ```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,12 +107,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+   ```sh
+   npm test
+   ```
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+   ```sh
+   npm run build
+   ```
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,7 +126,9 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+   ```sh
+   npm run eject
+   ```
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
@@ -39,32 +138,9 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## License
+No license
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+My email address: nteulings@yahoo.com  
+Project Link: [https://github.com/nteulings/frontend-eindopdracht-globalbinge](https://github.com/nteulings/frontend-eindopdracht-globalbinge)
