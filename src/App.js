@@ -1,18 +1,17 @@
 import React from "react";
 import './App.css';
-import TopMenu from '../src/components/TopMenu'
-import About from "./Pages/About";
-import Countries from './Pages/Countries';
-import Login from './Pages/Forms/Login';
-import HomePage from "./Pages/Home";
-import Register from "./Pages/Forms/Register";
-import Profile from "./Pages/Profile";
-import Search from "./Pages/Search";
-import DetailInfo from "./Pages/DetailInfo";
-import LoginSuccess from "./Pages/SuccessPages/LoginSuccess";
-import RegisterSuccess from "./Pages/SuccessPages/RegisterSuccess"
-import ContentPerCountry from "./components/ContentPerCountry";
-import SearchDetails from "./components/SearchDetails";
+import TopMenu from './components/topMenu/TopMenu'
+import About from "./pages/about/About";
+import Countries from './pages/countries/Countries';
+import Login from './pages/forms/Login';
+import HomePage from "./pages/Home";
+import Register from "./pages/forms/Register";
+import Profile from "./pages/profile/Profile";
+import Search from "./pages/search/Search";
+import DetailInfo from "./components/detailInfo/DetailInfo";
+import LoginSuccess from "./pages/successPages/LoginSuccess";
+import RegisterSuccess from "./pages/successPages/RegisterSuccess"
+import ContentPerCountry from "./components/contentPerCountry/ContentPerCountry";
 import {
     Switch,
     Route,
@@ -44,10 +43,7 @@ function App() {
               <Route exact path="/search">
                   <Search />
               </Route>
-                <Route exact path="/search/:nfid/:clist">
-                    <SearchDetails />
-                </Route>
-              <Route path="/detailinfo">
+                <Route exact path="/detailinfo/:nfid/:clist">
                   <DetailInfo />
               </Route>
               <Route exact path="/login">
