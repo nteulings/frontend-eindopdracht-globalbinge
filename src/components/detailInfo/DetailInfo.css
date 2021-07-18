@@ -1,0 +1,43 @@
+main.max-width{
+    max-width: 700px;
+}
+
+.detailinfo-wrapper {
+    display: flex;
+    padding-top: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+header {
+    order: 0;
+    flex: 0 1 100%;
+    align-self: auto;
+    border-bottom: solid 2px #B81D24;
+}
+
+.info-image {
+    order: 0;
+    flex: 0 1 35%;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+.info {
+    order: 0;
+    flex: 0 1 65%;
+    align-self: auto;
+}
+
+img.info-image{
+    width:100px;
+}
+
+.info-text {
+    display: flex;
+    text-align: left;
+    margin-left: 20px;
+}
