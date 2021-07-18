@@ -1,3 +1,5 @@
+/*CSS for screens bigger than 575 px*/
+
 .form-container {
     display: flex;
     flex-direction: column;
