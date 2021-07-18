@@ -11,7 +11,3 @@
 p ~ Link {
     text-underline: white;
 }
-
-p ~ Link {
-    color: red;
-}

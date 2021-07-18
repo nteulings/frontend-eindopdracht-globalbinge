@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { authContext } from '../context/AuthContext';
+import { authContext } from '../../context/AuthContext';
 import "./Profile.css"
+import BackgroundImage from "../../components/BackgroundImage";
 
 // #Userdata from context to profile
 // - [x] import useContext function and authContext
@@ -13,13 +14,16 @@ function Profile() {
     console.log("what is authcontext", user)
 
     return (
-        <article className={"profile-container"}>
+        <>
+        <BackgroundImage />
+            <article className={"profile-container"}>
             <h1 className={"title"}>Your profile</h1>
                     <h3><strong>Username:</strong> {user?.username}</h3>
                     <h3><strong>Email:</strong> {user?.email}</h3>
 
-            <h3>Back to <Link to="/">homepage</Link></h3>
+            <p>Back to <Link to="/">homepage</Link></p>
         </article>
+            </>
     );
 }
 
