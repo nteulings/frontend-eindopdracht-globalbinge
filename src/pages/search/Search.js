@@ -67,7 +67,7 @@ function SearchMovies() {
                             <ul className={"poster-images"}
                                 key ={queryResults.nfid}>
 
-                                    <li className={"postercard"}>
+                                    de<li className={"postercard"}>
                                         <img className={"poster-image"}
                                              src={(!queryResults.poster || queryResults.poster === "N/A") ? imageNotAvailable : queryResults.poster}
                                              alt={queryResults.title}
