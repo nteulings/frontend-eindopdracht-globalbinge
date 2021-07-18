@@ -3,9 +3,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import BackButton from "../backButton/BackButton";
 import "./DetailInfo.css";
-import ExpContentCard from "../contentPerCountry/ExpContentCard";
-// import "./DetailInfo.css"
-
 // import imageNotAvailable from '../assets/ImageNotAvailable.png'
 
 const apiKey = `${process.env.REACT_APP_API_KEY}`
@@ -47,11 +44,10 @@ function SearchDetails() {
                     />
                     <article className="info">
                         <p className="info-text">description: {detailInfoData.synopsis}</p>
-                        <p className={"info-text"}>type:{detailInfoData.vtype}</p>
-                        <p className={"info-text"}>year: {detailInfoData.year}</p>
-                        <p className={"info-text"}>IMDB rating: {detailInfoData.imdbrating}</p>
-                        <p className={"info-text"}>available in: {countryList}</p>
-                        }
+                        <p className="info-text">type:{detailInfoData.vtype}</p>
+                        <p className="info-text">year: {detailInfoData.year}</p>
+                        <p className="info-text">IMDB rating: {detailInfoData.imdbrating}</p>
+                        <p className="info-text">available in: {countryList}</p>
                     </article>
                     <BackButton />
                 </div>
