@@ -2,9 +2,7 @@
     display: flex;
     margin: auto;
     flex-direction: row;
-    /*justify-content: space-around;*/
     align-items: flex-start;
-    /*align-content: flex-start;*/
     justify-content: space-evenly;
     padding: 35px;
     width: 80%;
