@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import "./Forms.css";
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
+import BackgroundImage from "../../components/BackgroundImage";
 
 export default function SignUp() {
     const [ loading, toggleLoading] = useState(false)
@@ -42,6 +43,7 @@ export default function SignUp() {
 
     return (
         <>
+            <BackgroundImage />
             <form className={"form-container"}
               onSubmit={handleSubmit(onSubmit)}>
             <h1>REGISTER</h1>

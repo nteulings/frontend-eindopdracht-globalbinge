@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import "./Forms.css"
 import axios from "axios";
 import { authContext } from "../../context/AuthContext";
+import BackgroundImage from "../../components/BackgroundImage";
 
 // [ ] set errors and validation
 // [ ] set error messages
@@ -41,7 +42,8 @@ console.log(error);
 
     return (
         <>
-        <form className={"form-container"}
+            <BackgroundImage />
+            <form className={"form-container"}
             onSubmit={handleSubmit(onSubmit)}>
 
             <h1>LOGIN</h1>
