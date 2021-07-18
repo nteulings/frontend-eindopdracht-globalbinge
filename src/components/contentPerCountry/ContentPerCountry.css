@@ -1,3 +1,5 @@
+/*mobile*/
+
 .poster-container {
     width: 90%;
 }
@@ -10,6 +12,8 @@
 .poster-title {
     width: 125px;
    }
+
+/*screen min-width: 575px*/
 
 @media screen and (min-width: 575px) {
     .poster-container {
