@@ -2,46 +2,50 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import "./Countries.css";
-
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 const apiKey = `${process.env.REACT_APP_API_KEY}`
-
-// -[ ] order results alphabetically?
+const headers = {
+    'x-rapidapi-key': apiKey,
+    'x-rapidapi-host': 'unogsng.p.rapidapi.com'
+};
 
 function Countries() {
     const [countryData, setCountryData] = useState (null);
+    const [loading, toggleLoading] = useState(false);
+    const [error, setError] = useState(false);
+    // const sortedCountryData = countryData.sort(a,b);
+    // console.log(sortedCountryData);
     const history = useHistory();
-    // const [countryID, setCountryId] = useState('67')
-    // const [countryName, setCountryName] = useState("Netherlands")
-    // console.log('what is countryData', countryData);
-    // console.log('countryId?', countryID);
-    // console.log('countryName?', countryName);
 
 useEffect(() => {
     async function fetchCountryData() {
-    // console.log("on mount");
+        toggleLoading(true);
+        setError(false);
+
+        try {
             const response = await axios.get('https://unogsng.p.rapidapi.com/countries'
                 , {
-                    headers: {
-                        'x-rapidapi-key': apiKey,
-                        'x-rapidapi-host': 'unogsng.p.rapidapi.com'
-                    }
-                });
-            setCountryData(response.data.results);
-            console.log("what is setCountry.data", response.data.results)
+                    headers: headers
+            });
+                setCountryData(response.data.results);
+        } catch(e) {
+          console.Error(e);
+          setError(`Something went wrong! (${e.message})`);
+        }
+
+        toggleLoading(false);
     }
+
         fetchCountryData();
     }, []);
 
-
-// const getCountryIDName = () => {
-//     setCountryId(countryData.id);
-//     setCountryName(countryData.country)}
-
     return (
-        // <countryDataContext.Provider value={countryID}>
     <main className={"countrylist"}>
-        <h1 className={"title"}>Countries</h1>
+        <h1 className={"title"}>COUNTRIES</h1>
         <h3 className={"description"}>select a country from which you want to see new and expiring netflix content</h3>
+            {loading && <LoadingSpinner/>}
+            {error && <h3 className="error-message">{error}</h3>}
+
         <section className={"countrylist-container"}>
             { countryData ? (
                 countryData.map((countryData) => {
@@ -55,11 +59,11 @@ useEffect(() => {
                         </button>
                             )
                 })
-            ) : (<h1>Loading...</h1>
-            )}
+            ) : (<h1>Loading...</h1>)
+            }
         </section>
     </main>
-        // </countryDataContext.Provider>
     );
-        }
+}
+
 export default Countries
