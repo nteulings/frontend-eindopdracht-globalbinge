@@ -1,5 +1,5 @@
 import React from 'react';
-import BgImage from '../assets/bg-image.jpeg'
+import BgImage from '../../assets/bg-image.jpeg'
 import "./BackgroundImage.css"
 
 function BackgroundImage() {

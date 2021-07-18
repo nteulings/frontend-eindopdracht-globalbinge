@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../assets/globalbing-logo.png'
 import { Link } from 'react-router-dom';
 import "./About.css";
-import BackgroundImage from "../../components/BackgroundImage";
+import BackgroundImage from "../../components/backgroundImage/BackgroundImage";
 
 
 function About() {

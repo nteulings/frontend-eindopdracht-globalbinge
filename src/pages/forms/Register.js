@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import "./Forms.css";
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
-import BackgroundImage from "../../components/BackgroundImage";
+import BackgroundImage from "../../components/backgroundImage/BackgroundImage";
 
 export default function SignUp() {
     const [ loading, toggleLoading] = useState(false)

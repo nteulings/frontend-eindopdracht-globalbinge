@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import "./Forms.css"
 import axios from "axios";
 import { authContext } from "../../context/AuthContext";
-import BackgroundImage from "../../components/BackgroundImage";
+import BackgroundImage from "../../components/backgroundImage/BackgroundImage";
 
 // [ ] set errors and validation
 // [ ] set error messages

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../context/AuthContext';
 import "./Profile.css"
-import BackgroundImage from "../../components/BackgroundImage";
+import BackgroundImage from "../../components/backgroundImage/BackgroundImage";
 
 // #Userdata from context to profile
 // - [x] import useContext function and authContext

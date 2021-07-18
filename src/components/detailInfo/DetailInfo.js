@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import BackButton from "../BackButton";
+import BackButton from "../backButton/BackButton";
 import "./DetailInfo.css";
 import ExpContentCard from "../contentPerCountry/ExpContentCard";
 // import "./DetailInfo.css"
