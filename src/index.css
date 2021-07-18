@@ -11,7 +11,7 @@ body {
     background-color: #221F1F;
 }
 
-h1,h2,h3,p {
+h1, h2, h3, p {
     color: #F5F5F1;
 }
 
@@ -20,24 +20,46 @@ h1 {
     font-weight: bold;
 }
 
+h1.title {
+    letter-spacing: 5px;
+}
+
 h2 {
     font-size: 2em;
     font-weight: bold;
 }
 
 h3 {
-    font-size: 1.5em;
+    font-size: 1.25em;
     font-weight: normal;
 }
 
 p {
-    font-size:1.25em;
+    font-size: 1.5em;
+    padding-top: 10px;
 }
 
-/*.page-container {*/
-/*    margin: 50px auto;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
+main {
+    margin: 20px auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
-/*    align-items: center;*/
-/*}*/
+/*screen min width 575px*/
+@media screen and (min-width: 575px) {
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+}
