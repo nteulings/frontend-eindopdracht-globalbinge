@@ -5,10 +5,10 @@ function Home() {
     const history = useHistory()
 
 
-return(
-    <div>hallo
-        {history.push(`/countries/${'67'}/${"The Netherlands"}`)}
-    </div>
+return  (
+        <div>hallo
+            {history.push(`/countries/${'67'}/${"The Netherlands"}`)}
+        </div>
         )
 }
 export default Home;

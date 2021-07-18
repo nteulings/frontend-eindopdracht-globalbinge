@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './TopMenu.css'
 import { NavLink } from 'react-router-dom';
 import Logo from '../../assets/globalbing-logo.png';
-import {ImInfo, ImMenu, ImUser, ImUserCheck, ImSearch, ImEarth} from "react-icons/im";
+import {ImInfo, ImUser, ImSearch, ImEarth} from "react-icons/im";
 
 
 
@@ -24,8 +24,11 @@ function TopMenu() {
                 <NavLink to="/" exact><img src={Logo} alt="Logo" id={"logo"}/></NavLink>
                     <ul className={"navigation"}>
                         <li>
-                            <NavLink to="/about" className="screen"
-                                     activeClassName="active-link">About</NavLink>
+                            <NavLink to="/about"
+                                         activeClassName="active-link"
+                                         className="screen"
+                                        >About
+                            </NavLink>
                             <NavLink to="/about" className="mobile"><ImInfo /></NavLink>
                         </li>
                     { user &&
@@ -34,13 +37,16 @@ function TopMenu() {
                             <NavLink to="/countries"
                                          activeClassName="active-link"
                                          className="screen"
-                                >Countries
-                                </NavLink>
+                                        >Countries
+                            </NavLink>
                             <NavLink to="/countries" className="mobile"><ImEarth /></NavLink>
                         </li>
                         <li>
-                            <NavLink to="/search" className="screen"
-                                     activeClassName="active-link">Search</NavLink>
+                            <NavLink to="/search"
+                                        activeClassName="active-link"
+                                        className="screen"
+                                        >Search
+                            </NavLink>
                             <NavLink to="/search" className="mobile"><ImSearch /></NavLink>
                         </li>
                     </>
